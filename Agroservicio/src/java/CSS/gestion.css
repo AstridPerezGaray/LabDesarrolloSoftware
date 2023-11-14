@@ -1,0 +1,67 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 13 nov 2023, 21:07:53
+    Author     : Astrid
+*/
+/* Estilo para la tabla */
+            table {
+                width: 100%; /* Prueba aumentando el ancho de la tabla */
+                margin: 20px auto;
+                border-collapse: collapse;
+                border: 1px solid #333333;
+            }
+            th, td {
+                border: 1px solid #333333;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #a0c4ff;
+                color: white;
+            }
+            h1 {
+                color: #333333;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            /* Estilo para el formulario */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+            form {
+                text-align: center; /* Centra el contenido del formulario */
+            }
+            label {
+                display: block;
+                margin-top: 10px;
+                color: #333333; /* Color similar al texto de la tabla */
+            }
+            input {
+                width: calc(100% - 20px);
+                padding: 8px;
+                margin-top: 5px;
+                border: 1px solid #333333; /* Borde similar al de la tabla */
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            form input[type="submit"] {
+                width: 100%; /* Ajusta el ancho de los botones al 50% */
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 10px auto; /* Centra los botones vertical y horizontalmente */
+            }
+            form input[type="submit"]:hover {
+                background-color: #45a049;
+            }
