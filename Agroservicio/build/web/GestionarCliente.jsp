@@ -30,7 +30,8 @@
                     <th>dui</th>
                     <th>tipoCliente</th>
                     <th>fechaRegistro</th>
-                    <th>ID_Direccion</th>
+                    <th>nombreMunicipio</th>
+                    <th>nombreDepartamento</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +45,8 @@
                         <td><c:out value="${item.dui}" /></td>
                         <td><c:out value="${item.tipoCliente}" /></td>
                         <td><c:out value="${item.fechaRegistro}" /></td>
-                        <td><c:out value="${item.ID_Direccion}" /></td>
+                        <td><c:out value="${item.nombreMunicipio}" /></td>
+                        <td><c:out value="${item.nombreDepartamento}" /></td>
                         <td>
                             <form method="POST" action="/Agroservicio/ModificarCliente.jsp" style="display: inline-block;">
                                 <input type="hidden" name="ID_Cliente" value="${item.ID_Cliente}" />
@@ -53,8 +55,9 @@
                                 <input type="hidden" name="telefono" value="${item.telefonoCliente}" />
                                 <input type="hidden" name="correo" value="${item.correo}" />
                                 <input type="hidden" name="dui" value="${item.dui}" />
-                                <input type="hidden" name="ID_Direccion" value="${item.ID_Direccion}" />
                                 <input type="hidden" name="tipoCliente" value="${item.tipoCliente}" />
+                                <input type="hidden" name="nombreMunicipio" value="${item.nombreMunicipio}" />
+                                <input type="hidden" name="nombreDepartamento" value="${item.nombreDepartamento}" />
                                 <input type="submit" value="Modificar" />
                             </form>
                             <form method="POST" action="/Agroservicio/EliminarCliente.jsp" style="display: inline-block;">
@@ -64,7 +67,8 @@
                                 <input type="hidden" name="telefono" value="${item.telefonoCliente}" />
                                 <input type="hidden" name="correo" value="${item.correo}" />
                                 <input type="hidden" name="dui" value="${item.dui}" />
-                                <input type="hidden" name="ID_Direccion" value="${item.ID_Direccion}" />
+                                <input type="hidden" name="nombreMunicipio" value="${item.nombreMunicipio}" />
+                                <input type="hidden" name="nombreDepartamento" value="${item.nombreDepartamento}" />
                                 <input type="hidden" name="tipoCliente" value="${item.tipoCliente}" />
                                 <input type="submit" value="Eliminar" />
                             </form>

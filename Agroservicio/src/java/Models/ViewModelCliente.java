@@ -19,7 +19,8 @@ public class ViewModelCliente {
     private String dui;
     private String tipoCliente;
     private Date fechaRegistro;
-    private int ID_Direccion;
+    private String nombreMunicipio;
+    private String nombreDepartamento;
 
     /**
      * @return the ID_Cliente
@@ -64,17 +65,17 @@ public class ViewModelCliente {
     }
 
     /**
-     * @return the telefono
+     * @return the telefonoCliente
      */
     public String getTelefonoCliente() {
         return telefonoCliente;
     }
 
     /**
-     * @param telefono the telefono to set
+     * @param telefonoCliente the telefonoCliente to set
      */
-    public void setTelefonoCliente(String telefono) {
-        this.telefonoCliente = telefono;
+    public void setTelefonoCliente(String telefonoCliente) {
+        this.telefonoCliente = telefonoCliente;
     }
 
     /**
@@ -134,16 +135,30 @@ public class ViewModelCliente {
     }
 
     /**
-     * @return the ID_Direccion
+     * @return the nombreMunicipio
      */
-    public int getID_Direccion() {
-        return ID_Direccion;
+    public String getNombreMunicipio() {
+        return nombreMunicipio;
     }
 
     /**
-     * @param ID_Direccion the ID_Direccion to set
+     * @param nombreMunicipio the nombreMunicipio to set
      */
-    public void setID_Direccion(int ID_Direccion) {
-        this.ID_Direccion = ID_Direccion;
+    public void setNombreMunicipio(String nombreMunicipio) {
+        this.nombreMunicipio = nombreMunicipio;
+    }
+
+    /**
+     * @return the nombreDepartamento
+     */
+    public String getNombreDepartamento() {
+        return nombreDepartamento;
+    }
+
+    /**
+     * @param nombreDepartamento the nombreDepartamento to set
+     */
+    public void setNombreDepartamento(String nombreDepartamento) {
+        this.nombreDepartamento = nombreDepartamento;
     }
 }

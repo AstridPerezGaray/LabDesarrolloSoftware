@@ -101,7 +101,7 @@ public class ServletPrincipal extends HttpServlet {
 
                 try(Connection conn = DriverManager.getConnection(url)){
                     request.setAttribute("mensaje_conexion", "Ok!");
-                    String sqlQuery = "select * from Clientes";
+                    String sqlQuery = "select * from VistaClientes";
                     PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
                     ResultSet rs = pstmt.executeQuery();
                     ArrayList<ViewModelCliente> listaCliente = new ArrayList<>();
@@ -115,7 +115,8 @@ public class ServletPrincipal extends HttpServlet {
                         cliente.setDui(rs.getString("DUI"));
                         cliente.setTipoCliente(rs.getString("TipoCliente"));
                         cliente.setFechaRegistro(rs.getDate("FechaRegistro"));
-                        cliente.setID_Direccion(rs.getInt("ID_Direccion"));
+                        cliente.setNombreMunicipio(rs.getString("NombreMunicipio"));
+                        cliente.setNombreDepartamento(rs.getString("NombreDepartamento"));
 
 
                         listaCliente.add(cliente);
