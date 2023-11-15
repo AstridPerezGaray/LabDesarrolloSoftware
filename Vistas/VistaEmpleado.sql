@@ -1,3 +1,5 @@
+use Agroservicio
+
 CREATE VIEW VistaEmpleado AS
 SELECT 
     E.ID_Empleado,
