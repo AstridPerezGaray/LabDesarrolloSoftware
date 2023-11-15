@@ -18,17 +18,12 @@
             <ul>
                 <li><a href="/Agroservicio">Inicio del sistema</a></li>
                 <li><a href="/Agroservicio?accion=Login">Login</a></li>
-                <li><a href="/Agroservicio?accion=RegistrarCategorias">Registro de Categorias</a></li>
-                <li><a href="/Agroservicio?accion=RegistrarProductos">Registro de Productos</a></li>
-                <li><a href="/Agroservicio?accion=RegistarCompras">Registro de Compras</a></li>
-                <li><a href="/Agroservicio?accion=RegistrarVentas">Registro de Ventas</a></li>
-                <li><a href="/Agroservicio?accion=RegistrarClientes">Registro de Cliente</a></li>
-                <li><a href="/Agroservicio?accion=RegistrarProveedores">Registro de Proveedores</a></li>
                 <li><a href="/Agroservicio?accion=GestionarEmpleados">GestionarEmpleados</a></li>
                 <li><a href="/Agroservicio?accion=AgregarEmpleado">AgregarEmpleados</a></li>
                 <li><a href="/Agroservicio?accion=GestionarCliente">GestionarClientes</a></li>
                 <li><a href="/Agroservicio?accion=MostrarDirecciones">Mostrar Direcciones</a></li>
                 <li><a href="/Agroservicio?accion=MostrarFacturas">Mostrar Facturas</a></li>
+                <li><a href="/Agroservicio?accion=GestionarProveedores">Gestionar Proveedores</a></li>
 
             </ul>
         </nav>

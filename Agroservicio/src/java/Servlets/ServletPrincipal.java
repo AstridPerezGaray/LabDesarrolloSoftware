@@ -20,6 +20,7 @@ import java.io.PrintWriter;
 
 import Models.ViewModelEmpleados;
 import Models.ViewModelFacturas;
+import Models.ViewModelProveedores;
 
 import javax.swing.JOptionPane;
 
@@ -433,6 +434,40 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
             ex.printStackTrace();
         }
     }
+    
+    
+    public void mostrarProveedores(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            try (Connection conn = DriverManager.getConnection(url)) {
+                request.setAttribute("mensaje_conexion", "Ok!");
+                String sqlQuery = "select * from VistaProveedores";
+                PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
+                ResultSet rs = pstmt.executeQuery();
+                ArrayList<ViewModelProveedores> listaProveedor = new ArrayList<>();
+                while (rs.next()) {
+                    ViewModelProveedores proveedor = new ViewModelProveedores();
+                    proveedor.setID_Proveedor(rs.getInt("ID_Proveedor"));
+                    proveedor.setNombreProveedor(rs.getString("NombreProveedor"));
+                    proveedor.setTelefono(rs.getString("Telefono"));
+                    proveedor.setCorreo(rs.getString("Correo"));
+                    proveedor.setFechaRegistro(rs.getDate("FechaRegistro"));
+                    proveedor.setLinea1(rs.getString("Linea1"));
+                    proveedor.setLinea2(rs.getString("linea2"));
+                    proveedor.setNombreDistrito(rs.getString("NombreDistrito"));
+                    proveedor.setNombreMunicipio(rs.getString("NombreMunicipio"));
+
+                    listaProveedor.add(proveedor);
+                }
+                request.setAttribute("listaProveedor", listaProveedor);
+
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            request.setAttribute("mensaje_conexion", ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -477,6 +512,9 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
         }else if (accion.equals("MostrarFacturas")) {
             mostrarFacturas(request, response);
             request.getRequestDispatcher("/MostrarFacturas.jsp").forward(request, response);
+        }else if (accion.equals("GestionarProveedores")) {
+            mostrarProveedores(request, response);
+            request.getRequestDispatcher("/GestionarProveedores.jsp").forward(request, response);
         }
         //REDIRECCION PARA JSP DE AGREGAR
         else if (accion.equals("AgregarEmpleado")) {
