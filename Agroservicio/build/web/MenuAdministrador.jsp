@@ -24,6 +24,9 @@
                 <li><a href="/Agroservicio?accion=MostrarDirecciones">Mostrar Direcciones</a></li>
                 <li><a href="/Agroservicio?accion=MostrarFacturas">Mostrar Facturas</a></li>
                 <li><a href="/Agroservicio?accion=GestionarProveedores">Gestionar Proveedores</a></li>
+                <li><a href="/Agroservicio?accion=AgregarProveedor">Agregar Proveedores</a></li>
+                <li><a href="/Agroservicio?accion=GestionarUsuarios">Gestionar Usuarios</a></li>
+                <li><a href="/Agroservicio?accion=AgregarUsuario">Agregar Usuarios</a></li>
 
             </ul>
         </nav>

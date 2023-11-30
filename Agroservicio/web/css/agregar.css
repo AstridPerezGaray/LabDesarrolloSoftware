@@ -7,79 +7,61 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Astrid
 */
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
 
-        h1 {
-            color: #333333;
-            text-align: center;
-        }
+form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        form {
-            width: 50%;
-            margin: 0 auto;
-        }
+h1 {
+    text-align: center;
+}
 
-        label {
-            display: block;
-            margin-top: 10px;
-            color: #555555;
-        }
+label {
+    display: block;
+    margin-bottom: 5px;
+}
 
-        input {
-            width: calc(100% - 20px);
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="submit"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
 
-        input[type="date"],
-        input[type="text"],
-        input[type="email"] {
-            width: calc(100% - 20px);
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
-        input[type="submit"] {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
+a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #666;
+}
 
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            text-decoration: none;
-            color: #333333;
-        }
-
-        .success-message {
-            color: darkgreen;
-            font-weight: bold;
-        }
-
-        .error-message {
-            color: red;
-            font-weight: bold;
-        }
+a:hover {
+    color: #000;
+}

@@ -21,6 +21,7 @@ import java.io.PrintWriter;
 import Models.ViewModelEmpleados;
 import Models.ViewModelFacturas;
 import Models.ViewModelProveedores;
+import Models.ViewModelUsuarios;
 
 import javax.swing.JOptionPane;
 
@@ -58,6 +59,8 @@ public class ServletPrincipal extends HttpServlet {
     }
     //FUNCIONES DE CRUD SOBRE LA BASE DE DATOS
     //Funciones de lectura de tablas (SELECT)
+    
+    ////////////////ACA VA LO DE EMPLEADOS///////////////////////////
     public void mostrarEmpleados(HttpServletRequest request, HttpServletResponse response) {
             try {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -95,42 +98,7 @@ public class ServletPrincipal extends HttpServlet {
                 ex.printStackTrace();
             }
         }
-
-    public void mostrarClientes(HttpServletRequest request, HttpServletResponse response) {
-            try {
-                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-
-                try(Connection conn = DriverManager.getConnection(url)){
-                    request.setAttribute("mensaje_conexion", "Ok!");
-                    String sqlQuery = "select * from VistaClientes";
-                    PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
-                    ResultSet rs = pstmt.executeQuery();
-                    ArrayList<ViewModelCliente> listaCliente = new ArrayList<>();
-                    while (rs.next()) {
-                        ViewModelCliente cliente = new ViewModelCliente();
-                        cliente.setID_Cliente(rs.getInt("ID_Cliente"));
-                        cliente.setNombreCliente(rs.getString("NombreCliente"));
-                        cliente.setApellidoCliente(rs.getString("ApellidoCliente"));
-                        cliente.setTelefonoCliente(rs.getString("TelefonoCliente"));
-                        cliente.setCorreo(rs.getString("Correo"));
-                        cliente.setDui(rs.getString("DUI"));
-                        cliente.setTipoCliente(rs.getString("TipoCliente"));
-                        cliente.setFechaRegistro(rs.getDate("FechaRegistro"));
-                        cliente.setNombreMunicipio(rs.getString("NombreMunicipio"));
-                        cliente.setNombreDepartamento(rs.getString("NombreDepartamento"));
-
-
-                        listaCliente.add(cliente);
-                    }               
-                    request.setAttribute("listaCliente", listaCliente);
-
-                }
-            } catch (SQLException | ClassNotFoundException ex) {
-                request.setAttribute("mensaje_conexion", ex.getMessage());
-                ex.printStackTrace();
-            }
-        }
-public void modificarEmpleado(HttpServletRequest request, HttpServletResponse response) {
+    public void modificarEmpleado(HttpServletRequest request, HttpServletResponse response) {
         //CAPTURA DE VARIABLES
         String ID_Empleado = request.getParameter("ID_Empleado");
         String DUI_Empleado = request.getParameter("dui");
@@ -173,57 +141,7 @@ public void modificarEmpleado(HttpServletRequest request, HttpServletResponse re
             ex.printStackTrace();
         }
     }
-public void modificarCliente(HttpServletRequest request, HttpServletResponse response) {
-        //CAPTURA DE VARIABLES
-        String ID_Cliente = request.getParameter("ID_Cliente");
-        String nombreCliente = request.getParameter("nombreCliente");
-        String apellidoCliente = request.getParameter("apellidoCliente");
-        String telefono = request.getParameter("telefono");
-        String correo = request.getParameter("correo");
-        String dui = request.getParameter("dui");
-        String tipoCliente = request.getParameter("tipoCliente");
-        String fechaRegistro = request.getParameter("fechaRegistro");
-        String ID_Direccion = request.getParameter("ID_Direccion");
-
-        String sql = "UPDATE Clientes SET "
-    + "NombreCliente=?, "
-    + "ApellidoCliente=?, "
-    + "Telefono=?, "
-    + "Correo=?, "
-    + "DUI=?, "
-    + "TipoCliente=?, "
-    + "FechaRegistro=?, " 
-    + "ID_Direccion=? "
-    + "WHERE ID_Cliente=?";
-
-try (Connection conn = DriverManager.getConnection(url)) {
-    request.setAttribute("mensaje_conexion", "Ok!");
-
-    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-        pstmt.setString(1, nombreCliente);
-        pstmt.setString(2, apellidoCliente);
-        pstmt.setString(3, telefono);
-        pstmt.setString(4, correo);
-        pstmt.setString(5, dui);
-        pstmt.setString(6, tipoCliente);
-        pstmt.setString(7, fechaRegistro);
-        pstmt.setString(8, ID_Direccion);
-        pstmt.setString(9, ID_Cliente);
-
-        int registros = pstmt.executeUpdate();
-        if (registros > 0) {
-            request.getSession().setAttribute("exito", true);
-        } else {
-            request.getSession().setAttribute("exito", false);
-        }
-    }
-} catch (SQLException ex) {
-    request.getSession().setAttribute("exito", false);
-    ex.printStackTrace();
-}
-
-    }    
-public void agregarEmpleado(HttpServletRequest request, HttpServletResponse response) {
+    public void agregarEmpleado(HttpServletRequest request, HttpServletResponse response) {
         //CAPTURA DE VARIABLES
         //El ID de los empleados es autoincrementable
         String nombresEmpleado = request.getParameter("nombresEmpleado");
@@ -263,7 +181,34 @@ public void agregarEmpleado(HttpServletRequest request, HttpServletResponse resp
             ex.printStackTrace();
         }
     }
-public void agregarCliente(HttpServletRequest request, HttpServletResponse response) {
+    public void eliminarEmpleado(HttpServletRequest request, HttpServletResponse response) {
+        // Obtener el ID del empleado a eliminar desde la solicitud
+        String idEmpleado = request.getParameter("id");
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            try (Connection conn = DriverManager.getConnection(url)) {
+                request.setAttribute("mensaje_conexion", "Ok!");
+                String sql = "DELETE FROM Empleados WHERE ID_Empleado = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, idEmpleado);
+                int registros = pstmt.executeUpdate();
+                if (registros > 0) {
+                    // Éxito al eliminar el empleado
+                    request.getSession().setAttribute("exito", true);
+                } else {
+                    // No se encontró al empleado a eliminar
+                    request.getSession().setAttribute("no exito", false);
+                }
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            request.getSession().setAttribute("exito", false);
+            ex.printStackTrace();
+        }
+    }
+    
+    ///////////////////AQUI VA LO DE CLIENTES ////////////////
+    public void agregarCliente(HttpServletRequest request, HttpServletResponse response) {
         //CAPTURA DE VARIABLES
         //El ID de los empleados es autoincrementable
         String nombreCliente = request.getParameter("nombreCliente");
@@ -301,32 +246,59 @@ public void agregarCliente(HttpServletRequest request, HttpServletResponse respo
             ex.printStackTrace();
         }
     }     
-public void eliminarEmpleado(HttpServletRequest request, HttpServletResponse response) {
-        // Obtener el ID del empleado a eliminar desde la solicitud
-        String idEmpleado = request.getParameter("id");
+    
+    public void modificarCliente(HttpServletRequest request, HttpServletResponse response) {
+        //CAPTURA DE VARIABLES
+        String ID_Cliente = request.getParameter("ID_Cliente");
+        String nombreCliente = request.getParameter("nombreCliente");
+        String apellidoCliente = request.getParameter("apellidoCliente");
+        String telefono = request.getParameter("telefono");
+        String correo = request.getParameter("correo");
+        String dui = request.getParameter("dui");
+        String tipoCliente = request.getParameter("tipoCliente");
+        String fechaRegistro = request.getParameter("fechaRegistro");
+        String ID_Direccion = request.getParameter("ID_Direccion");
 
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            try (Connection conn = DriverManager.getConnection(url)) {
-                request.setAttribute("mensaje_conexion", "Ok!");
-                String sql = "DELETE FROM Empleados WHERE ID_Empleado = ?";
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.setString(1, idEmpleado);
+        String sql = "UPDATE Clientes SET "
+    + "NombreCliente=?, "
+    + "ApellidoCliente=?, "
+    + "Telefono=?, "
+                + "Correo=?, "
+                + "DUI=?, "
+                + "TipoCliente=?, "
+                + "FechaRegistro=?, "
+                + "ID_Direccion=? "
+                + "WHERE ID_Cliente=?";
+
+        try (Connection conn = DriverManager.getConnection(url)) {
+            request.setAttribute("mensaje_conexion", "Ok!");
+
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, nombreCliente);
+                pstmt.setString(2, apellidoCliente);
+                pstmt.setString(3, telefono);
+                pstmt.setString(4, correo);
+                pstmt.setString(5, dui);
+                pstmt.setString(6, tipoCliente);
+                pstmt.setString(7, fechaRegistro);
+                pstmt.setString(8, ID_Direccion);
+                pstmt.setString(9, ID_Cliente);
+
                 int registros = pstmt.executeUpdate();
                 if (registros > 0) {
-                    // Éxito al eliminar el empleado
                     request.getSession().setAttribute("exito", true);
                 } else {
-                    // No se encontró al empleado a eliminar
-                    request.getSession().setAttribute("no exito", false);
+                    request.getSession().setAttribute("exito", false);
                 }
             }
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             request.getSession().setAttribute("exito", false);
             ex.printStackTrace();
         }
+
     }
-public void eliminarCliente(HttpServletRequest request, HttpServletResponse response) {
+
+    public void eliminarCliente(HttpServletRequest request, HttpServletResponse response) {
         // Obtener el ID del Cliente a eliminar desde la solicitud
         String ID_Cliente = request.getParameter("id");
 
@@ -352,6 +324,41 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
         }
     }
 
+    public void mostrarClientes(HttpServletRequest request, HttpServletResponse response) {
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+                try(Connection conn = DriverManager.getConnection(url)){
+                    request.setAttribute("mensaje_conexion", "Ok!");
+                    String sqlQuery = "select * from VistaClientes";
+                    PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
+                    ResultSet rs = pstmt.executeQuery();
+                    ArrayList<ViewModelCliente> listaCliente = new ArrayList<>();
+                    while (rs.next()) {
+                        ViewModelCliente cliente = new ViewModelCliente();
+                        cliente.setID_Cliente(rs.getInt("ID_Cliente"));
+                        cliente.setNombreCliente(rs.getString("NombreCliente"));
+                        cliente.setApellidoCliente(rs.getString("ApellidoCliente"));
+                        cliente.setTelefonoCliente(rs.getString("TelefonoCliente"));
+                        cliente.setCorreo(rs.getString("Correo"));
+                        cliente.setDui(rs.getString("DUI"));
+                        cliente.setTipoCliente(rs.getString("TipoCliente"));
+                        cliente.setFechaRegistro(rs.getDate("FechaRegistro"));
+                        cliente.setNombreMunicipio(rs.getString("NombreMunicipio"));
+                        cliente.setNombreDepartamento(rs.getString("NombreDepartamento"));
+
+
+                        listaCliente.add(cliente);
+                    }               
+                    request.setAttribute("listaCliente", listaCliente);
+
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                request.setAttribute("mensaje_conexion", ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+    
     //////////  ACA VA LO DE DIRECCIONES ///////////
     public void mostrarDirecciones(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -435,7 +442,7 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
         }
     }
     
-    
+    ///////////////// ACA VA PROVEEDORES
     public void mostrarProveedores(HttpServletRequest request, HttpServletResponse response) {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -453,10 +460,8 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
                     proveedor.setTelefono(rs.getString("Telefono"));
                     proveedor.setCorreo(rs.getString("Correo"));
                     proveedor.setFechaRegistro(rs.getDate("FechaRegistro"));
-                    proveedor.setLinea1(rs.getString("Linea1"));
-                    proveedor.setLinea2(rs.getString("linea2"));
-                    proveedor.setNombreDistrito(rs.getString("NombreDistrito"));
-                    proveedor.setNombreMunicipio(rs.getString("NombreMunicipio"));
+                    proveedor.setID_Direccion(rs.getInt("ID_Direccion"));
+                    proveedor.setDireccionCompleta(rs.getString("DireccionCompleta"));
 
                     listaProveedor.add(proveedor);
                 }
@@ -465,6 +470,245 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
             }
         } catch (SQLException | ClassNotFoundException ex) {
             request.setAttribute("mensaje_conexion", ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+    
+    public void modificarProveedor(HttpServletRequest request, HttpServletResponse response) {
+        //CAPTURA DE VARIABLES
+        String ID_Proveedor = request.getParameter("ID_Proveedor");
+        String nombreProveedor = request.getParameter("nombreProveedor");
+        String telefono = request.getParameter("telefono");
+        String correo = request.getParameter("correo");
+        String fechaRegistro = request.getParameter("fechaRegistro");
+        String ID_Direccion = request.getParameter("ID_Direccion");
+
+        String sql = "UPDATE Proveedores SET "
+                + "NombreProveedor=?, "
+                + "Telefono=?, "
+                + "Correo=?, "
+                + "FechaRegistro=?, "
+                + "ID_Direccion=? "
+                + "WHERE ID_Proveedor=?";
+
+        try (Connection conn = DriverManager.getConnection(url)) {
+            request.setAttribute("mensaje_conexion", "Ok!");
+
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, nombreProveedor);
+                pstmt.setString(2, telefono);
+                pstmt.setString(3, correo);
+                pstmt.setString(4, fechaRegistro);
+                pstmt.setString(5, ID_Direccion);
+                pstmt.setString(6, ID_Proveedor);
+
+                int registros = pstmt.executeUpdate();
+                if (registros > 0) {
+                    request.getSession().setAttribute("exito", true);
+                } else {
+                    request.getSession().setAttribute("exito", false);
+                }
+            }
+        } catch (SQLException ex) {
+            request.getSession().setAttribute("exito", false);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void agregarProveedor(HttpServletRequest request, HttpServletResponse response) {
+        //CAPTURA DE VARIABLES
+        //El ID de los Proveedores es autoincrementable
+        String nombreProveedor = request.getParameter("nombreProveedor");
+        String telefono = request.getParameter("telefono");
+        String correo = request.getParameter("correo");
+        String fechaRegistro = request.getParameter("fechaRegistro");
+        String ID_Direccion = request.getParameter("ID_Direccion");
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            try (Connection conn = DriverManager.getConnection(url)) {
+                request.setAttribute("mensaje_conexion", "Ok!");
+                String sql = "insert into Proveedores values (?, ?, ?, ?,?)";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, nombreProveedor);
+                pstmt.setString(2, telefono);
+                pstmt.setString(3, correo);
+                pstmt.setString(4, fechaRegistro);
+                pstmt.setString(5, ID_Direccion);
+
+                int registros = pstmt.executeUpdate();
+                if (registros > 0) {
+                    request.getSession().setAttribute("exito", true);
+                } else {
+                    request.getSession().setAttribute("exito", false);
+                }
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            request.getSession().setAttribute("exito", false);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void eliminarProveedor(HttpServletRequest request, HttpServletResponse response) {
+        // Obtener el ID del Proveedor a eliminar desde la solicitud
+        String ID_Proveedor = request.getParameter("ID_Proveedor");
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            try (Connection conn = DriverManager.getConnection(url)) {
+                request.setAttribute("mensaje_conexion", "Ok!");
+                String sql = "DELETE FROM Proveedores WHERE ID_Proveedor = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, ID_Proveedor);
+                int registros = pstmt.executeUpdate();
+                if (registros > 0) {
+                    // Éxito al eliminar el cliente
+                    request.getSession().setAttribute("exito", true);
+                } else {
+                    // No se encontró al cliente eliminar
+                    request.getSession().setAttribute("no exito", false);
+                }
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            request.getSession().setAttribute("exito", false);
+            ex.printStackTrace();
+        }
+    }
+    
+    //////////////////////////AQUI VA USUARIOS///////////////////////////
+    public void mostrarUsuarios(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            try (Connection conn = DriverManager.getConnection(url)) {
+                request.setAttribute("mensaje_conexion", "Ok!");
+                String sqlQuery = "select * from VistaUsuarios";
+                PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
+                ResultSet rs = pstmt.executeQuery();
+                ArrayList<ViewModelUsuarios> listaUsuarios = new ArrayList<>();
+                while (rs.next()) {
+                    ViewModelUsuarios usuarios = new ViewModelUsuarios();
+                    usuarios.setID_Usuario(rs.getInt("ID_Usuario"));
+                    usuarios.setUsuario(rs.getString("Usuario"));
+                    usuarios.setClave(rs.getString("Clave"));
+                    usuarios.setID_Empleado(rs.getInt("ID_Empleado"));
+                    usuarios.setID_Rol(rs.getInt("ID_Rol"));
+                    usuarios.setNombresEmpleado(rs.getString("NombresEmpleado"));
+                    usuarios.setNombreTipoEmpleado(rs.getString("NombreTipoEmpleado")); 
+                    usuarios.setOpciones(rs.getString("Opciones"));
+
+                    listaUsuarios.add(usuarios);
+                }
+                request.setAttribute("listaUsuarios", listaUsuarios);
+
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            request.setAttribute("mensaje_conexion", ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    public void modificarUsuario(HttpServletRequest request, HttpServletResponse response) {
+        //CAPTURA DE VARIABLES
+        String ID_Usuario = request.getParameter("ID_Usuario");
+        String usuario = request.getParameter("usuario");
+        String clave = request.getParameter("clave");
+        String ID_Rol = request.getParameter("ID_Rol");
+        String nombresEmpleado = request.getParameter("nombresEmpleado");
+        String nombreTipoEmpleado = request.getParameter("nombreTipoEmpleado");
+        String opciones = request.getParameter("opciones");
+
+        String sql = "UPDATE Usuarios SET "
+                + "Usuario=?, "
+                + "Clave=?, "
+                + "ID_Rol=?, "
+                + "NombresEmpleado=?, "
+                + "NombreTipoEmpleado=?, "
+                + "Opciones=? "
+                + "WHERE ID_Usuario=?";
+
+        try (Connection conn = DriverManager.getConnection(url)) {
+            request.setAttribute("mensaje_conexion", "Ok!");
+
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, usuario);
+                pstmt.setString(2, clave);
+                pstmt.setString(3, ID_Rol);
+                pstmt.setString(4, nombresEmpleado);
+                pstmt.setString(5, nombreTipoEmpleado);
+                pstmt.setString(6, opciones);
+                pstmt.setString(7, ID_Usuario);
+
+                int registros = pstmt.executeUpdate();
+                if (registros > 0) {
+                    request.getSession().setAttribute("exito", true);
+                } else {
+                    request.getSession().setAttribute("exito", false);
+                }
+            }
+        } catch (SQLException ex) {
+            request.getSession().setAttribute("exito", false);
+            ex.printStackTrace();
+        }
+    }
+
+    public void agregarUsuario(HttpServletRequest request, HttpServletResponse response) {
+        //CAPTURA DE VARIABLES
+        //El ID de los Proveedores es autoincrementable
+        String usuario = request.getParameter("usuario");
+        String clave = request.getParameter("clave");
+        String ID_Empleado = request.getParameter("ID_Empleado");
+        String ID_Rol = request.getParameter("ID_Rol");
+        String nombresEmpleado = request.getParameter("nombresEmpleado");
+        String nombreTipoEmpleado = request.getParameter("nombreTipoEmpleado");
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            try (Connection conn = DriverManager.getConnection(url)) {
+                request.setAttribute("mensaje_conexion", "Ok!");
+                String sql = "insert into Proveedores values (?, ?, ?, ?,?)";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, usuario);
+                pstmt.setString(2, clave);
+                pstmt.setString(3, ID_Empleado);
+                pstmt.setString(4, ID_Rol);
+                pstmt.setString(5, nombresEmpleado);
+                pstmt.setString(6, nombreTipoEmpleado);
+                
+
+                int registros = pstmt.executeUpdate();
+                if (registros > 0) {
+                    request.getSession().setAttribute("exito", true);
+                } else {
+                    request.getSession().setAttribute("exito", false);
+                }
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            request.getSession().setAttribute("exito", false);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
+        // Obtener el ID del Proveedor a eliminar desde la solicitud
+        String ID_Proveedor = request.getParameter("ID_Usuario");
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            try (Connection conn = DriverManager.getConnection(url)) {
+                request.setAttribute("mensaje_conexion", "Ok!");
+                String sql = "DELETE FROM Usuarios WHERE ID_Usuario = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, ID_Proveedor);
+                int registros = pstmt.executeUpdate();
+                if (registros > 0) {
+                    // Éxito al eliminar el cliente
+                    request.getSession().setAttribute("exito", true);
+                } else {
+                    // No se encontró al cliente eliminar
+                    request.getSession().setAttribute("no exito", false);
+                }
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            request.getSession().setAttribute("exito", false);
             ex.printStackTrace();
         }
     }
@@ -509,13 +753,20 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
         }else if (accion.equals("MostrarDirecciones")) {
             mostrarDirecciones(request, response);
             request.getRequestDispatcher("/MostrarDirecciones.jsp").forward(request, response);
-        }else if (accion.equals("MostrarFacturas")) {
+        }
+        else if (accion.equals("MostrarFacturas")) {
             mostrarFacturas(request, response);
             request.getRequestDispatcher("/MostrarFacturas.jsp").forward(request, response);
-        }else if (accion.equals("GestionarProveedores")) {
-            mostrarProveedores(request, response);
-            request.getRequestDispatcher("/GestionarProveedores.jsp").forward(request, response);
         }
+        else if (accion.equals("GestionarProveedores")) {
+            mostrarProveedores(request, response);
+            request.getRequestDispatcher("/PanelGestion/GestionarProveedores.jsp").forward(request, response);
+        }
+        else if (accion.equals("GestionarUsuarios")) {
+            mostrarUsuarios(request, response);
+            request.getRequestDispatcher("/PanelGestion/GestionarUsuarios.jsp").forward(request, response);
+        }
+        
         //REDIRECCION PARA JSP DE AGREGAR
         else if (accion.equals("AgregarEmpleado")) {
             if (request.getSession().getAttribute("exito") != null) {
@@ -531,6 +782,19 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
                 request.getSession().removeAttribute("exito");
             }
             request.getRequestDispatcher("AgregarCliente.jsp").forward(request, response);
+            
+        }else if (accion.equals("AgregarProveedor")) {
+            if (request.getSession().getAttribute("exito") != null) {
+                request.setAttribute("exito", request.getSession().getAttribute("exito"));
+                request.getSession().removeAttribute("exito");
+            }
+            request.getRequestDispatcher("Agregar/AgregarProveedor.jsp").forward(request, response);
+        }else if (accion.equals("AgregarUsuario")) {
+            if (request.getSession().getAttribute("exito") != null) {
+                request.setAttribute("exito", request.getSession().getAttribute("exito"));
+                request.getSession().removeAttribute("exito");
+            }
+            request.getRequestDispatcher("Agregar/AgregarUsuario.jsp").forward(request, response);
         }
     }   
     @Override
@@ -581,15 +845,27 @@ public void eliminarCliente(HttpServletRequest request, HttpServletResponse resp
         } else if (accion.equals("ModificarCliente")) {
             modificarCliente(request, response);
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarCliente");
-        } else if (accion.equals("EliminarCliente")) {
+        }else if (accion.equals("EliminarCliente")) {
             eliminarCliente(request, response);
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarCliente");
-        }else if (accion.equals("MostrarDirecciones")) {
-            mostrarDirecciones(request, response);
-            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=MostrarDirecciones");
-        }else if (accion.equals("MostrarFacturas")) {
-            mostrarFacturas(request, response);
-            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=MostrarFacturas");
+        }else if (accion.equals("EliminarProveedor")) {
+            eliminarProveedor(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarProveedores");
+        }else if (accion.equals("ModificarProveedor")) {
+            modificarProveedor(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarProveedores");
+        }else if (accion.equals("AgregarProveedor")) {
+            agregarProveedor(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=AgregarProveedor");
+        }else if (accion.equals("AgregarUsuario")) {
+            agregarUsuario(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=AgregarUsuario");
+        }else if (accion.equals("EliminarUsuario")) {
+            eliminarUsuario(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarUsuario");
+        }else if (accion.equals("ModificarUsuario")) {
+            modificarUsuario(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarUsuario");
         }
     }
     /**

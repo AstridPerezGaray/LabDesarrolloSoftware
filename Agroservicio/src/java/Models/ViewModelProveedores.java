@@ -16,10 +16,8 @@ public class ViewModelProveedores {
     private String telefono;
     private String correo;
     private Date fechaRegistro;
-    private String linea1;
-    private String linea2;
-    private String nombreDistrito;
-    private String nombreMunicipio;
+    private int ID_Direccion;
+    private String direccionCompleta;
 
     /**
      * @return the ID_Proveedor
@@ -92,58 +90,30 @@ public class ViewModelProveedores {
     }
 
     /**
-     * @return the linea1
+     * @return the ID_Direccion
      */
-    public String getLinea1() {
-        return linea1;
+    public int getID_Direccion() {
+        return ID_Direccion;
     }
 
     /**
-     * @param linea1 the linea1 to set
+     * @param ID_Direccion the ID_Direccion to set
      */
-    public void setLinea1(String linea1) {
-        this.linea1 = linea1;
+    public void setID_Direccion(int ID_Direccion) {
+        this.ID_Direccion = ID_Direccion;
     }
 
     /**
-     * @return the linea2
+     * @return the direccionCompleta
      */
-    public String getLinea2() {
-        return linea2;
+    public String getDireccionCompleta() {
+        return direccionCompleta;
     }
 
     /**
-     * @param linea2 the linea2 to set
+     * @param direccionCompleta the direccionCompleta to set
      */
-    public void setLinea2(String linea2) {
-        this.linea2 = linea2;
-    }
-
-    /**
-     * @return the nombreDistrito
-     */
-    public String getNombreDistrito() {
-        return nombreDistrito;
-    }
-
-    /**
-     * @param nombreDistrito the nombreDistrito to set
-     */
-    public void setNombreDistrito(String nombreDistrito) {
-        this.nombreDistrito = nombreDistrito;
-    }
-
-    /**
-     * @return the nombreMunicipio
-     */
-    public String getNombreMunicipio() {
-        return nombreMunicipio;
-    }
-
-    /**
-     * @param nombreMunicipio the nombreMunicipio to set
-     */
-    public void setNombreMunicipio(String nombreMunicipio) {
-        this.nombreMunicipio = nombreMunicipio;
+    public void setDireccionCompleta(String direccionCompleta) {
+        this.direccionCompleta = direccionCompleta;
     }
 }
