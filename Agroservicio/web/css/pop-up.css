@@ -7,7 +7,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Astrid
 */
 
+/*BARRA DE DESPLAZAMIENTO*/
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc; 
+    z-index: 1;
+    overflow-x: auto; /* Agrega desplazamiento horizontal */
+    overflow-y: auto; /* Agrega desplazamiento vertical */
+    max-height: 80%; /* Establece la altura máxima para que el contenedor sea scrollable */
+    max-width: 80%; /* Establece el ancho máximo para que el contenedor sea scrollable */
+}
 
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+/*************************************************************************************************/
 .popup-container {
     display: none;
     position: fixed;

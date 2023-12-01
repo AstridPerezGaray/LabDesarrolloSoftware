@@ -16,9 +16,9 @@
     <body>
         <h1>Eliminar Usuario</h1>
         <br>
-        <h3>Conexion: ${mensaje_conexion}</h3>
+        <h3>Conexión: ${mensaje_conexion}</h3>
 
-        <c:if test="${requestScope.mensaje_conexion == 'Ok!'}">
+        <c:if test="${mensaje_conexion == 'Ok!'}">
             <p>Conexión a la base de datos exitosa.</p>
         </c:if>
 
@@ -32,7 +32,8 @@
                 </c:otherwise>
             </c:choose>
         </c:if>
-        <form method="POST" action="/Agroservicio/ServletPrincipal?accion=EliminarProveedor">
+
+        <form method="POST" action="/Agroservicio/ServletPrincipal?accion=EliminarUsuario">
             <div>
                 <label>ID_Usuario ${param.ID_Usuario}</label><br>
                 <label>Usuario: ${param.usuario}</label><br>
@@ -42,12 +43,13 @@
                 <label>Nombres: ${param.nombresEmpleado}</label><br>
                 <label>Tipo: ${param.nombreTipoEmpleado}</label><br>
                 <label>Opciones: ${param.opciones}</label><br>
-                <input type="hidden" name="ID_Usuario" id="ID_Usuario" value="${param.ID_Usuario}" /><br><br>
-                <input type="submit" value="Eliminar Usuario" onclick="return confirm('¿Desea Eliminar el Usuario?')"/><br><br>
-            </div>
+                <input type="hidden" name="ID_Usuario" value="${param.ID_Usuario}" />
+                <input type="submit" value="Eliminar Usuario" onclick="return confirm('¿Desea eliminar el Usuario?')"/><br><br>
+            </div><br>
             <div>
                 <a href="/Agroservicio/?accion=GestionarUsuarios">Regresar</a>
-            </div>  
+            </div>
         </form>
     </body>
+
 </html>

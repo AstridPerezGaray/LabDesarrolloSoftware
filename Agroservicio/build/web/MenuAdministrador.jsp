@@ -20,9 +20,10 @@
                 <li><a href="/Agroservicio?accion=Login">Login</a></li>
                 <li><a href="/Agroservicio?accion=GestionarEmpleados">GestionarEmpleados</a></li>
                 <li><a href="/Agroservicio?accion=AgregarEmpleado">AgregarEmpleados</a></li>
-                <li><a href="/Agroservicio?accion=GestionarCliente">GestionarClientes</a></li>
-                <li><a href="/Agroservicio?accion=MostrarDirecciones">Mostrar Direcciones</a></li>
-                <li><a href="/Agroservicio?accion=MostrarFacturas">Mostrar Facturas</a></li>
+                <li><a href="/Agroservicio?accion=GestionarClientes">Gestionar Clientes</a></li>
+                <li><a href="/Agroservicio?accion=AgregarCliente">Agregar Clientes</a></li>
+                <li><a href="/Agroservicio?accion=GestionarFacturas">Gestionar Facturas</a></li>
+                <li><a href="/Agroservicio?accion=AgregarFactura">Agregar Factura</a></li>
                 <li><a href="/Agroservicio?accion=GestionarProveedores">Gestionar Proveedores</a></li>
                 <li><a href="/Agroservicio?accion=AgregarProveedor">Agregar Proveedores</a></li>
                 <li><a href="/Agroservicio?accion=GestionarUsuarios">Gestionar Usuarios</a></li>

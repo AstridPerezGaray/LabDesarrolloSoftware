@@ -19,8 +19,7 @@ public class ViewModelCliente {
     private String dui;
     private String tipoCliente;
     private Date fechaRegistro;
-    private String nombreMunicipio;
-    private String nombreDepartamento;
+    private String direccionCompleta;
 
     /**
      * @return the ID_Cliente
@@ -135,30 +134,18 @@ public class ViewModelCliente {
     }
 
     /**
-     * @return the nombreMunicipio
+     * @return the direccionCompleta
      */
-    public String getNombreMunicipio() {
-        return nombreMunicipio;
+    public String getDireccionCompleta() {
+        return direccionCompleta;
     }
 
     /**
-     * @param nombreMunicipio the nombreMunicipio to set
+     * @param direccionCompleta the direccionCompleta to set
      */
-    public void setNombreMunicipio(String nombreMunicipio) {
-        this.nombreMunicipio = nombreMunicipio;
+    public void setDireccionCompleta(String direccionCompleta) {
+        this.direccionCompleta = direccionCompleta;
     }
 
-    /**
-     * @return the nombreDepartamento
-     */
-    public String getNombreDepartamento() {
-        return nombreDepartamento;
-    }
 
-    /**
-     * @param nombreDepartamento the nombreDepartamento to set
-     */
-    public void setNombreDepartamento(String nombreDepartamento) {
-        this.nombreDepartamento = nombreDepartamento;
-    }
 }

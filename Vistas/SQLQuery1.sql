@@ -84,3 +84,82 @@ INNER JOIN VistaRolesCompletos Vis ON Vis.ID_Rol = U.ID_Rol;
 
 select * from VistaUsuarios;
 	
+select * from Usuarios;
+
+
+--/////////////////////////////////////////////////////////////////////////
+CREATE VIEW VistaDetalleFacturas AS
+SELECT
+    DF.ID_DetalleFactura,
+    DF.CantidadProducto,
+    DF.PrecioUnitario,
+    DF.Subtotal,
+    DF.IMPUESTO_IVA,
+    DF.Total,
+    DF.ID_Producto,
+    P.NombreProducto,
+    P.FechaVencimiento,
+    P.Descripcion,
+    C.NombreCategoria AS NombreCategoriaProducto
+FROM DetalleFacturas DF
+INNER JOIN Productos P ON DF.ID_Producto = P.ID_Producto
+INNER JOIN Categoria C ON P.ID_Categoria = C.ID_Categoria;
+
+select * from VistaDetalleFacturas;
+
+
+CREATE VIEW VistaFacturas AS
+SELECT 
+    F.ID_Factura,
+    F.NumeroFactura,
+    F.Comentario,
+    F.FormaDePago,
+    F.ID_DetalleFactura,
+    F.ID_Cliente,
+    F.ID_Empleado,
+    C.NombreCliente,
+    C.ApellidoCliente,
+    C.TelefonoCliente,
+    C.Correo,
+    C.DUI,
+    C.TipoCliente,
+    DF.CantidadProducto,
+    DF.PrecioUnitario,
+    DF.Subtotal,
+    DF.IMPUESTO_IVA,
+    DF.Total,
+    DF.ID_Producto,
+    DF.NombreProducto,
+    DF.FechaVencimiento,
+    DF.Descripcion,
+    DF.NombreCategoriaProducto
+FROM Facturas F
+INNER JOIN VistaDetalleFacturas DF ON F.ID_DetalleFactura = DF.ID_DetalleFactura
+INNER JOIN Clientes C ON F.ID_Cliente = C.ID_Cliente;
+
+select * from Facturas;
+
+
+--////////////////////////////////////////////////////////////////////////////////////////
+
+CREATE VIEW VistaClientes AS
+SELECT
+    c.ID_Cliente,
+    c.NombreCliente,
+    c.ApellidoCliente,
+    c.TelefonoCliente,
+    c.Correo,
+    c.DUI,
+    c.TipoCliente,
+    c.FechaRegistro,
+    CONCAT(d.Linea1, ',', d.Linea2, ',', dis.NombreDistrito, ',', m.NombreMunicipio, ',', dep.NombreDepartamento, ',', CAST(d.CodigoPostal AS char(5))) AS DireccionCompleta
+FROM
+    Clientes c
+INNER JOIN Direcciones d ON c.ID_Direccion = d.ID_Direccion
+INNER JOIN Distritos dis ON d.ID_Distrito = dis.ID_Distrito
+INNER JOIN Municipios m ON dis.ID_Municipio = m.ID_Municipio
+INNER JOIN Departamentos dep ON m.ID_Departamento = dep.ID_Departamento;
+
+
+drop view VistaClientes
+select * from VistaClientes;

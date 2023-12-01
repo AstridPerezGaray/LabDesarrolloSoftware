@@ -7,7 +7,6 @@ package Models;
 import java.util.Date;
 
 public class ViewModelEmpleados {
-
     private int ID_Empleado;
     private String nombresEmpleado;
     private String apellidosEmpleado;
@@ -22,6 +21,33 @@ public class ViewModelEmpleados {
     private String nombreMunicipio;
     private String nombreDepartamento;
     private String nombreTipoEmpleado;
+
+    // Constructor privado para evitar la instanciación directa
+    public ViewModelEmpleados() {}
+
+    // Método estático para crear una instancia de ViewModelEmpleados desde los datos de VistaEmpleado
+    public static ViewModelEmpleados fromVistaEmpleado(int idEmpleado, String nombres, String apellidos,
+            Date fechaNacimiento, String tel, String correo, String dui, int isss, String dirLinea1,
+            String dirLinea2, String distrito, String municipio, String departamento, String tipoEmpleado) {
+        
+        ViewModelEmpleados viewModel = new ViewModelEmpleados();
+        viewModel.setID_Empleado(idEmpleado);
+        viewModel.setNombresEmpleado(nombres);
+        viewModel.setApellidosEmpleado(apellidos);
+        viewModel.setFechaNac(fechaNacimiento);
+        viewModel.setTelefono(tel);
+        viewModel.setCorreo(correo);
+        viewModel.setDui(dui);
+        viewModel.setIsss(isss);
+        viewModel.setLinea1(dirLinea1);
+        viewModel.setLinea2(dirLinea2);
+        viewModel.setNombreDistrito(distrito);
+        viewModel.setNombreMunicipio(municipio);
+        viewModel.setNombreDepartamento(departamento);
+        viewModel.setNombreTipoEmpleado(tipoEmpleado);
+
+        return viewModel;
+    }
 
     /**
      * @return the ID_Empleado
@@ -218,5 +244,4 @@ public class ViewModelEmpleados {
     public void setNombreTipoEmpleado(String nombreTipoEmpleado) {
         this.nombreTipoEmpleado = nombreTipoEmpleado;
     }
-
 }
