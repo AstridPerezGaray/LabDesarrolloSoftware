@@ -53,6 +53,7 @@
                                         '${item.dui}',
                                         '${item.tipoCliente}',
                                         '${item.fechaRegistro}'
+                                        
                                     )" > Ver detalles 
                             </button>
                         <!-- Contenedor del pop-up -->
@@ -71,7 +72,7 @@
                                 <button onclick="abrirPopup()">Cerrar</button>
                             </div>
 
-                        <form method="POST" action="/Agroservicio/ModificarCliente.jsp" style="display: inline-block;">
+                        <form method="POST" action="/Agroservicio/Modificar/ModificarCliente.jsp" style="display: inline-block;">
                             <input type="hidden" name="ID_Cliente" value="${item.ID_Cliente}" />
                                 <input type="hidden" name="nombreCliente" value="${item.nombreCliente}" />
                                 <input type="hidden" name="apellidoCliente" value="${item.apellidoCliente}" />
@@ -85,7 +86,7 @@
                             <input type="submit" value="Modificar" />
                         </form>
 
-                        <form method="POST" action="/Agroservicio/EliminarCliente.jsp" style="display: inline-block;">
+                        <form method="POST" action="/Agroservicio/Eliminar/EliminarCliente.jsp" style="display: inline-block;">
                             <input type="hidden" name="ID_Cliente" value="${item.ID_Cliente}" />
                             <input type="hidden" name="nombreCliente" value="${item.nombreCliente}" />
                                 <input type="hidden" name="apellidoCliente" value="${item.apellidoCliente}" />
@@ -105,6 +106,7 @@
             </c:forEach>
         </tbody>
     </table>
+        </body>
      <script>
         function abrirPopup() {
             var popup = document.getElementById('popup');
@@ -144,5 +146,5 @@
             }
 
     </script>
-    </body>
+    
 </html>

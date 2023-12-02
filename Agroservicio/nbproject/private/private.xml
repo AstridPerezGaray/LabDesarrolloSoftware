@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/PanelGestion/GestionarInventarios.jsp</file>
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Modificar/ModificarInventario.jsp</file>
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Agregar/AgregarInventario.jsp</file>
             <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/src/java/Servlets/ServletPrincipal.java</file>
-            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/PanelGestion/GestionarClientes.jsp</file>
-            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/PanelGestion/GestionarFacturas.jsp</file>
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Eliminar/EliminarInventario.jsp</file>
             <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/MenuAdministrador.jsp</file>
-            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/PanelGestion/GestionarProveedores.jsp</file>
         </group>
     </open-files>
 </project-private>

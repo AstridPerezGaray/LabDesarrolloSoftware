@@ -1,17 +1,17 @@
 <%-- 
     Document   : ModificarEmpleado
-    Created on : 5 nov 2023, 20:43:07
-    Author     : ccerr
+    Created on : 2 dic 2023, 01:19:27
+    Author     : Astrid
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Modicificar Empleado</title>
-        
-        <link rel="stylesheet" type="text/css" href="css/modificar.css"
+        <title>ModificarEmpleado</title>
+        <link rel="stylesheet" type="text/css" href="../css/modificar.css">
     </head>
     <body>
      <c:if test="${exito!=null}">
@@ -44,7 +44,7 @@
                 <label>ID Dirección:</label>
                 <input type="text" name="ID_Direccion" id="ID_Direccion" value="${param.ID_Direccion}" required /><br><br>  
                 <label>ID Cargo:</label>
-                <input type="text" name="ID_Cargo" id="ID_Cargo" value="${param.ID_Cargo}" required /><br>
+                <input type="text" name="ID_TipoEmpleado" id="ID_TipoEmpleado" value="${param.ID_TipoEmpleado}" required /><br>
                 <input type="submit" value="Modificar" onclick="return confirm('¿Desea modificar el empleado?')" /><br><br> 
             </div>
             <div>

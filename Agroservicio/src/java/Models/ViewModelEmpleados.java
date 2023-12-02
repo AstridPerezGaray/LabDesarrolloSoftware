@@ -15,39 +15,10 @@ public class ViewModelEmpleados {
     private String correo;
     private String dui;
     private int isss;
-    private String linea1;
-    private String linea2;
-    private String nombreDistrito;
-    private String nombreMunicipio;
-    private String nombreDepartamento;
+    private int ID_Direccion;
+    private int ID_TipoEmpleado;
     private String nombreTipoEmpleado;
-
-    // Constructor privado para evitar la instanciación directa
-    public ViewModelEmpleados() {}
-
-    // Método estático para crear una instancia de ViewModelEmpleados desde los datos de VistaEmpleado
-    public static ViewModelEmpleados fromVistaEmpleado(int idEmpleado, String nombres, String apellidos,
-            Date fechaNacimiento, String tel, String correo, String dui, int isss, String dirLinea1,
-            String dirLinea2, String distrito, String municipio, String departamento, String tipoEmpleado) {
-        
-        ViewModelEmpleados viewModel = new ViewModelEmpleados();
-        viewModel.setID_Empleado(idEmpleado);
-        viewModel.setNombresEmpleado(nombres);
-        viewModel.setApellidosEmpleado(apellidos);
-        viewModel.setFechaNac(fechaNacimiento);
-        viewModel.setTelefono(tel);
-        viewModel.setCorreo(correo);
-        viewModel.setDui(dui);
-        viewModel.setIsss(isss);
-        viewModel.setLinea1(dirLinea1);
-        viewModel.setLinea2(dirLinea2);
-        viewModel.setNombreDistrito(distrito);
-        viewModel.setNombreMunicipio(municipio);
-        viewModel.setNombreDepartamento(departamento);
-        viewModel.setNombreTipoEmpleado(tipoEmpleado);
-
-        return viewModel;
-    }
+    private String direccionCompleta;
 
     /**
      * @return the ID_Empleado
@@ -162,73 +133,31 @@ public class ViewModelEmpleados {
     }
 
     /**
-     * @return the linea1
+     * @return the ID_Direccion
      */
-    public String getLinea1() {
-        return linea1;
+    public int getID_Direccion() {
+        return ID_Direccion;
     }
 
     /**
-     * @param linea1 the linea1 to set
+     * @param ID_Direccion the ID_Direccion to set
      */
-    public void setLinea1(String linea1) {
-        this.linea1 = linea1;
+    public void setID_Direccion(int ID_Direccion) {
+        this.ID_Direccion = ID_Direccion;
     }
 
     /**
-     * @return the linea2
+     * @return the ID_TipoEmpleado
      */
-    public String getLinea2() {
-        return linea2;
+    public int getID_TipoEmpleado() {
+        return ID_TipoEmpleado;
     }
 
     /**
-     * @param linea2 the linea2 to set
+     * @param ID_TipoEmpleado the ID_TipoEmpleado to set
      */
-    public void setLinea2(String linea2) {
-        this.linea2 = linea2;
-    }
-
-    /**
-     * @return the nombreDistrito
-     */
-    public String getNombreDistrito() {
-        return nombreDistrito;
-    }
-
-    /**
-     * @param nombreDistrito the nombreDistrito to set
-     */
-    public void setNombreDistrito(String nombreDistrito) {
-        this.nombreDistrito = nombreDistrito;
-    }
-
-    /**
-     * @return the nombreMunicipio
-     */
-    public String getNombreMunicipio() {
-        return nombreMunicipio;
-    }
-
-    /**
-     * @param nombreMunicipio the nombreMunicipio to set
-     */
-    public void setNombreMunicipio(String nombreMunicipio) {
-        this.nombreMunicipio = nombreMunicipio;
-    }
-
-    /**
-     * @return the nombreDepartamento
-     */
-    public String getNombreDepartamento() {
-        return nombreDepartamento;
-    }
-
-    /**
-     * @param nombreDepartamento the nombreDepartamento to set
-     */
-    public void setNombreDepartamento(String nombreDepartamento) {
-        this.nombreDepartamento = nombreDepartamento;
+    public void setID_TipoEmpleado(int ID_TipoEmpleado) {
+        this.ID_TipoEmpleado = ID_TipoEmpleado;
     }
 
     /**
@@ -244,4 +173,19 @@ public class ViewModelEmpleados {
     public void setNombreTipoEmpleado(String nombreTipoEmpleado) {
         this.nombreTipoEmpleado = nombreTipoEmpleado;
     }
+
+    /**
+     * @return the direccionCompleta
+     */
+    public String getDireccionCompleta() {
+        return direccionCompleta;
+    }
+
+    /**
+     * @param direccionCompleta the direccionCompleta to set
+     */
+    public void setDireccionCompleta(String direccionCompleta) {
+        this.direccionCompleta = direccionCompleta;
+    }
+
 }

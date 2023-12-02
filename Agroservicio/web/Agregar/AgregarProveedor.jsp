@@ -36,7 +36,7 @@
                 <input type="date" name="fechaRegistro" id="fechaRegistro" required /><br>
                 <label> ID Direccion:</label>
                 <input type="text" name="ID_Direccion" id="ID_Direccion" required /><br>
-                <input type="submit" value="Registrar" onclick="return confirm('¿Desea registrar el empleado?')" /><br><br>
+                <input type="submit" value="Registrar" onclick="return confirm('¿Desea registrar el proveedor?')" /><br><br>
             </div><br>
             <div>
                 <a href="/Agroservicio/?accion=GestionarProveedores">Regresar</a>

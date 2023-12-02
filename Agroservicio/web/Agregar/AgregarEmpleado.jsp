@@ -1,18 +1,19 @@
 <%-- 
     Document   : AgregarEmpleado
-    Created on : 4 nov 2023, 08:10:43
-    Author     : ccerr
+    Created on : 2 dic 2023, 01:18:11
+    Author     : Astrid
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Agregar Empleado</title>
-        <link rel="stylesheet" type="text/css" href="css/agregar.css"
+        <title>AgregarEmpleado</title>
+        <link rel="stylesheet" type="text/css" href="css/agregar.css">
     </head>
-      <body>
+    <body>
         <c:if test="${exito!=null}">
             <c:if test="${exito}">
                 <p><strong style="color: darkgreen;">La información se guardó correctamente</strong></p>
