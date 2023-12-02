@@ -18,6 +18,7 @@
             <ul>
                 <li><a href="/Agroservicio">Inicio del sistema</a></li>
                 <li><a href="/Agroservicio?accion=Login">Login</a></li>
+<<<<<<< HEAD
                 <li><a href="/Agroservicio?accion=GestionarEmpleados">Gestionar Empleados</a></li>
                 <li><a href="/Agroservicio?accion=AgregarEmpleado">Agregar Empleados</a></li>
                 <li><a href="/Agroservicio?accion=GestionarClientes">Gestionar Clientes</a></li>
@@ -32,6 +33,17 @@
                 <li><a href="/Agroservicio?accion=AgregarUsuario">Agregar Usuarios</a></li>
                 <li><a href="/Agroservicio?accion=GestionarInventarios">GestionarInventarios</a></li>
                 <li><a href="/Agroservicio?accion=AgregarInventario">AgregarInventario</a></li>
+=======
+                <li><a href="/Agroservicio?accion=GestionarEmpleados">GestionarEmpleados</a></li>
+                <li><a href="/Agroservicio?accion=AgregarEmpleado">AgregarEmpleados</a></li>
+                <li><a href="/Agroservicio?accion=GestionarCliente">GestionarClientes</a></li>
+                <li><a href="/Agroservicio?accion=MostrarDirecciones">Mostrar Direcciones</a></li>
+                <li><a href="/Agroservicio?accion=MostrarFacturas">Mostrar Facturas</a></li>
+                <li><a href="/Agroservicio?accion=GestionarProveedores">Gestionar Proveedores</a></li>
+                <li><a href="/Agroservicio?accion=AgregarProveedor">Agregar Proveedores</a></li>
+                <li><a href="/Agroservicio?accion=GestionarUsuarios">Gestionar Usuarios</a></li>
+                <li><a href="/Agroservicio?accion=AgregarUsuario">Agregar Usuarios</a></li>
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 
             </ul>
         </nav>

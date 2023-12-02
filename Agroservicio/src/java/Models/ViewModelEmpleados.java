@@ -7,6 +7,10 @@ package Models;
 import java.util.Date;
 
 public class ViewModelEmpleados {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     private int ID_Empleado;
     private String nombresEmpleado;
     private String apellidosEmpleado;
@@ -15,10 +19,19 @@ public class ViewModelEmpleados {
     private String correo;
     private String dui;
     private int isss;
+<<<<<<< HEAD
     private int ID_Direccion;
     private int ID_TipoEmpleado;
     private String nombreTipoEmpleado;
     private String direccionCompleta;
+=======
+    private String linea1;
+    private String linea2;
+    private String nombreDistrito;
+    private String nombreMunicipio;
+    private String nombreDepartamento;
+    private String nombreTipoEmpleado;
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 
     /**
      * @return the ID_Empleado
@@ -133,6 +146,7 @@ public class ViewModelEmpleados {
     }
 
     /**
+<<<<<<< HEAD
      * @return the ID_Direccion
      */
     public int getID_Direccion() {
@@ -158,6 +172,75 @@ public class ViewModelEmpleados {
      */
     public void setID_TipoEmpleado(int ID_TipoEmpleado) {
         this.ID_TipoEmpleado = ID_TipoEmpleado;
+=======
+     * @return the linea1
+     */
+    public String getLinea1() {
+        return linea1;
+    }
+
+    /**
+     * @param linea1 the linea1 to set
+     */
+    public void setLinea1(String linea1) {
+        this.linea1 = linea1;
+    }
+
+    /**
+     * @return the linea2
+     */
+    public String getLinea2() {
+        return linea2;
+    }
+
+    /**
+     * @param linea2 the linea2 to set
+     */
+    public void setLinea2(String linea2) {
+        this.linea2 = linea2;
+    }
+
+    /**
+     * @return the nombreDistrito
+     */
+    public String getNombreDistrito() {
+        return nombreDistrito;
+    }
+
+    /**
+     * @param nombreDistrito the nombreDistrito to set
+     */
+    public void setNombreDistrito(String nombreDistrito) {
+        this.nombreDistrito = nombreDistrito;
+    }
+
+    /**
+     * @return the nombreMunicipio
+     */
+    public String getNombreMunicipio() {
+        return nombreMunicipio;
+    }
+
+    /**
+     * @param nombreMunicipio the nombreMunicipio to set
+     */
+    public void setNombreMunicipio(String nombreMunicipio) {
+        this.nombreMunicipio = nombreMunicipio;
+    }
+
+    /**
+     * @return the nombreDepartamento
+     */
+    public String getNombreDepartamento() {
+        return nombreDepartamento;
+    }
+
+    /**
+     * @param nombreDepartamento the nombreDepartamento to set
+     */
+    public void setNombreDepartamento(String nombreDepartamento) {
+        this.nombreDepartamento = nombreDepartamento;
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     }
 
     /**
@@ -174,6 +257,7 @@ public class ViewModelEmpleados {
         this.nombreTipoEmpleado = nombreTipoEmpleado;
     }
 
+<<<<<<< HEAD
     /**
      * @return the direccionCompleta
      */
@@ -188,4 +272,6 @@ public class ViewModelEmpleados {
         this.direccionCompleta = direccionCompleta;
     }
 
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 }

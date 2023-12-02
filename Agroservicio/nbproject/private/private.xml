@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/PanelGestion/GestionarInventarios.jsp</file>
             <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Modificar/ModificarInventario.jsp</file>
             <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Agregar/AgregarInventario.jsp</file>
             <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/src/java/Servlets/ServletPrincipal.java</file>
             <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Eliminar/EliminarInventario.jsp</file>
             <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/MenuAdministrador.jsp</file>
+=======
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Modificar/ModificarUsuario.jsp</file>
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/css/agregar.css</file>
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Eliminar/EliminarUsuario.jsp</file>
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/src/java/Servlets/ServletPrincipal.java</file>
+            <file>file:/C:/Users/Astrid/Music/LabDesarrolloSoftware/Agroservicio/web/Agregar/AgregarUsuario.jsp</file>
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         </group>
     </open-files>
 </project-private>

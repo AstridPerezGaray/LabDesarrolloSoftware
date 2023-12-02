@@ -5,20 +5,27 @@
 package Models;
 
 import java.math.BigDecimal;
+<<<<<<< HEAD
 import java.time.LocalDate;
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 
 /**
  *
  * @author Astrid
  */
 public class ViewModelFacturas {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     private int ID_Factura;
     private int numeroFactura;
     private String comentario;
     private String formaDePago;
     private int ID_DetalleFactura;
     private int ID_Cliente;
+<<<<<<< HEAD
     private int ID_Empleado;
     private String nombreCliente;
     private String apellidoCliente;
@@ -26,16 +33,28 @@ public class ViewModelFacturas {
     private String correo;
     private String dui;
     private String tipoCliente;
+=======
+    private String nombreCliente;
+    private String apellidoCliente;
+    private String telefonoCliente;
+    private String tipoCliente;
+    private int ID_Empleado;
+    private String nombresEmpleado;
+    private String apellidosEmpleado;
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     private int cantidadProducto;
     private BigDecimal precioUnitario;
     private BigDecimal subtotal;
     private BigDecimal IMPUESTO_IVA;
     private BigDecimal total;
+<<<<<<< HEAD
     private int ID_Producto;
     private String nombreProducto;
     private LocalDate fechaVencimiento;
     private String descripcion;
     private String nombreCategoriaProducto;
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 
     /**
      * @return the ID_Factura
@@ -164,6 +183,7 @@ public class ViewModelFacturas {
     }
 
     /**
+<<<<<<< HEAD
      * @return the correo
      */
     public String getCorreo() {
@@ -192,6 +212,8 @@ public class ViewModelFacturas {
     }
 
     /**
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
      * @return the tipoCliente
      */
     public String getTipoCliente() {
@@ -206,6 +228,51 @@ public class ViewModelFacturas {
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * @return the ID_Empleado
+     */
+    public int getID_Empleado() {
+        return ID_Empleado;
+    }
+
+    /**
+     * @param ID_Empleado the ID_Empleado to set
+     */
+    public void setID_Empleado(int ID_Empleado) {
+        this.ID_Empleado = ID_Empleado;
+    }
+
+    /**
+     * @return the nombresEmpleado
+     */
+    public String getNombresEmpleado() {
+        return nombresEmpleado;
+    }
+
+    /**
+     * @param nombresEmpleado the nombresEmpleado to set
+     */
+    public void setNombresEmpleado(String nombresEmpleado) {
+        this.nombresEmpleado = nombresEmpleado;
+    }
+
+    /**
+     * @return the apellidosEmpleado
+     */
+    public String getApellidosEmpleado() {
+        return apellidosEmpleado;
+    }
+
+    /**
+     * @param apellidosEmpleado the apellidosEmpleado to set
+     */
+    public void setApellidosEmpleado(String apellidosEmpleado) {
+        this.apellidosEmpleado = apellidosEmpleado;
+    }
+
+    /**
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
      * @return the cantidadProducto
      */
     public int getCantidadProducto() {
@@ -274,6 +341,7 @@ public class ViewModelFacturas {
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
+<<<<<<< HEAD
 
     /**
      * @return the ID_Producto
@@ -359,5 +427,7 @@ public class ViewModelFacturas {
         this.ID_Empleado = ID_Empleado;
     }
 
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     
 }

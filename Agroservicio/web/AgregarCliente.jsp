@@ -10,13 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Agregar Cliente</title>
-<<<<<<< HEAD
-        <link rel="stylesheet" type="text/css" href="css/agregar.css">
-=======
-        <link rel="stylesheet" type="text/css" href="../css/agregar.css">
->>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
+        <link rel="stylesheet" type="text/css" href="css/agregar.css"
     </head>
-    <body>
+     <body>
         <c:if test="${exito!=null}">
             <c:if test="${exito}">
                 <p><strong style="color: darkgreen;">La información se guardó correctamente</strong></p>
@@ -25,29 +21,31 @@
                 <p><strong style="color: red;">No se guardó la información</strong></p>
             </c:if>
         </c:if>   
-        <h1>Agregar Nuevo Proveedor</h1>
+        <h1>Agregar nuevo Cliente</h1>
 
-        <form method="POST" action="/Agroservicio/ServletPrincipal?accion=AgregarProveedor">
+        <form method="POST" action="/Agroservicio/ServletPrincipal?accion=AgregarCliente">
             <div>
-                <!-- El ID de los Proveedores es autoincrementable -->
+                <!-- El ID de los clientes es autoincrementable -->
                 <label>Nombres:</label>
-                <input type="text" name="nombreProveedor" id="nombreProveedor" required /><br>
+                <input type="text" name="nombreCliente" id="nombreCliente" required /><br>
+                <label>Apellidos:</label>
+                <input type="text" name="apellidoCliente" id="apellidoCliente" required /><br>
                 <label>Teléfono:</label>
                 <input type="text" name="telefono" id="telefono" required /><br>
                 <label>Correo:</label>
                 <input type="email" name="correo" id="correo" required /><br>
-                <label>Fecha de Registro:</label>
+                <label>DUI:</label>
+                <input type="text" name="dui" id="dui" required /><br>
+                <label>Tipo Cliente:</label>
+                <input type="text" name="tipoCliente" id="tipoCliente" required /><br>
+                <label>Fecha Registro:</label>
                 <input type="date" name="fechaRegistro" id="fechaRegistro" required /><br>
-                <label> ID Direccion:</label>
-                <input type="text" name="ID_Direccion" id="ID_Direccion" required /><br>
-<<<<<<< HEAD
-                <input type="submit" value="Registrar" onclick="return confirm('¿Desea registrar el proveedor?')" /><br><br>
-=======
-                <input type="submit" value="Registrar" onclick="return confirm('¿Desea registrar el empleado?')" /><br><br>
->>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
+                <label>ID Dirección:</label>
+                <input type="text" name="ID_Direccion" id="ID_Direccion" required /><br><br>                            
+                <input type="submit" value="Registrar" onclick="return confirm('¿Desea registrar el cliente?')" /><br><br>
             </div><br>
             <div>
-                <a href="/Agroservicio/?accion=GestionarProveedores">Regresar</a>
+                <a href="/Agroservicio/?accion=GestionarCliente">Regresar</a>
             </div>            
         </form>
     </body>

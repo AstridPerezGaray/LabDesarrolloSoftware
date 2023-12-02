@@ -10,7 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Agregar Cliente</title>
+<<<<<<< HEAD
         <link rel="stylesheet" type="text/css" href="css/agregar.css">
+=======
+        <link rel="stylesheet" type="text/css" href="../css/agregar.css">
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     </head>
     <body>
         <c:if test="${exito!=null}">
@@ -36,7 +40,11 @@
                 <input type="date" name="fechaRegistro" id="fechaRegistro" required /><br>
                 <label> ID Direccion:</label>
                 <input type="text" name="ID_Direccion" id="ID_Direccion" required /><br>
+<<<<<<< HEAD
                 <input type="submit" value="Registrar" onclick="return confirm('¿Desea registrar el proveedor?')" /><br><br>
+=======
+                <input type="submit" value="Registrar" onclick="return confirm('¿Desea registrar el empleado?')" /><br><br>
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
             </div><br>
             <div>
                 <a href="/Agroservicio/?accion=GestionarProveedores">Regresar</a>

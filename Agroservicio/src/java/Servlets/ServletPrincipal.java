@@ -4,7 +4,10 @@
  */
 package Servlets;
 import Models.ViewModelCliente;
+<<<<<<< HEAD
 import Models.ViewModelCompras;
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 import Models.ViewModelDirecciones;
 import java.sql.Connection; 
 import java.sql.DriverManager; 
@@ -23,7 +26,10 @@ import Models.ViewModelEmpleados;
 import Models.ViewModelFacturas;
 import Models.ViewModelProveedores;
 import Models.ViewModelUsuarios;
+<<<<<<< HEAD
 import Models.ViewModelnventarios;
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 
 import javax.swing.JOptionPane;
 
@@ -64,6 +70,7 @@ public class ServletPrincipal extends HttpServlet {
     
     ////////////////ACA VA LO DE EMPLEADOS///////////////////////////
     public void mostrarEmpleados(HttpServletRequest request, HttpServletResponse response) {
+<<<<<<< HEAD
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -101,6 +108,44 @@ public class ServletPrincipal extends HttpServlet {
         }
     }
 
+=======
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+                try(Connection conn = DriverManager.getConnection(url)){
+                    request.setAttribute("mensaje_conexion", "Ok!");
+                    String sqlQuery = "select * from VistaEmpleado";
+                    PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
+                    ResultSet rs = pstmt.executeQuery();
+                    ArrayList<ViewModelEmpleados> listaEmpleados = new ArrayList<>();
+                    while (rs.next()) {
+                        ViewModelEmpleados empleado = new ViewModelEmpleados();
+                        empleado.setID_Empleado(rs.getInt("ID_Empleado"));
+                        empleado.setNombresEmpleado(rs.getString("nombresEmpleado"));
+                        empleado.setApellidosEmpleado(rs.getString("apellidosEmpleado"));
+                        empleado.setFechaNac(rs.getDate("FechaNac"));
+                        empleado.setTelefono(rs.getString("Telefono"));
+                        empleado.setCorreo(rs.getString("Correo"));
+                        empleado.setDui(rs.getString("DUI"));
+                        empleado.setIsss(rs.getInt("ISSS"));
+                        empleado.setLinea1(rs.getString("Linea1"));
+                        empleado.setLinea2(rs.getString("linea2"));
+                        empleado.setNombreDistrito(rs.getString("NombreDistrito"));
+                        empleado.setNombreMunicipio(rs.getString("NombreMunicipio"));
+                        empleado.setNombreDepartamento(rs.getString("NombreDepartamento"));
+                        empleado.setNombreTipoEmpleado(rs.getString("NombreTipoEmpleado"));
+
+                        listaEmpleados.add(empleado);
+                    }
+                    request.setAttribute("listaEmpleados", listaEmpleados);
+
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                request.setAttribute("mensaje_conexion", ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     public void modificarEmpleado(HttpServletRequest request, HttpServletResponse response) {
         //CAPTURA DE VARIABLES
         String ID_Empleado = request.getParameter("ID_Empleado");
@@ -118,6 +163,7 @@ public class ServletPrincipal extends HttpServlet {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             try (Connection conn = DriverManager.getConnection(url)) {
                 request.setAttribute("mensaje_conexion", "Ok!");
+<<<<<<< HEAD
 
                 String sql = "update Empleados set "
                         + "DUI='" + DUI_Empleado + "', "
@@ -131,6 +177,21 @@ public class ServletPrincipal extends HttpServlet {
                         + "ID_Direccion='" + ID_Direccion + "' "
                         + "where ID_Empleado='" + ID_Empleado + "'";
 
+=======
+                
+                String sql = "update Empleados set "
+                 + "DUI='"+DUI_Empleado+"', "
+                 + "ISSS='"+ISSS_Empleado+"', "
+                 + "NombresEmpleado='"+nombresEmpleado+"', "
+                 + "ApellidosEmpleado='"+apellidosEmpleado+"', "
+                 + "FechaNac='"+fechaNacEmpleado+"', "
+                 + "Telefono='"+telefonoEmpleado+"', "
+                 + "Correo='"+correo+"', " 
+                 + "ID_TipoEmpleado='"+ID_Cargo+"', "
+                 + "ID_Direccion='"+ID_Direccion+"' " 
+                 + "where ID_Empleado='"+ID_Empleado+"'";
+                
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 int registros = pstmt.executeUpdate();
                 if (registros > 0) {
@@ -144,7 +205,10 @@ public class ServletPrincipal extends HttpServlet {
             ex.printStackTrace();
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     public void agregarEmpleado(HttpServletRequest request, HttpServletResponse response) {
         //CAPTURA DE VARIABLES
         //El ID de los empleados es autoincrementable
@@ -185,7 +249,10 @@ public class ServletPrincipal extends HttpServlet {
             ex.printStackTrace();
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     public void eliminarEmpleado(HttpServletRequest request, HttpServletResponse response) {
         // Obtener el ID del empleado a eliminar desde la solicitud
         String idEmpleado = request.getParameter("id");
@@ -218,7 +285,11 @@ public class ServletPrincipal extends HttpServlet {
         //El ID de los empleados es autoincrementable
         String nombreCliente = request.getParameter("nombreCliente");
         String apellidoCliente = request.getParameter("apellidoCliente");
+<<<<<<< HEAD
         String telefonoCliente = request.getParameter("telefonoCliente");
+=======
+        String telefono = request.getParameter("telefono");
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         String correo = request.getParameter("correo");
         String dui = request.getParameter("dui");
         String tipoCliente = request.getParameter("tipoCliente");
@@ -233,7 +304,11 @@ public class ServletPrincipal extends HttpServlet {
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, nombreCliente);
                 pstmt.setString(2, apellidoCliente);
+<<<<<<< HEAD
                 pstmt.setString(3, telefonoCliente);
+=======
+                pstmt.setString(3, telefono);
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
                 pstmt.setString(4, correo);
                 pstmt.setString(5, dui);
                 pstmt.setString(6, tipoCliente);
@@ -257,7 +332,11 @@ public class ServletPrincipal extends HttpServlet {
         String ID_Cliente = request.getParameter("ID_Cliente");
         String nombreCliente = request.getParameter("nombreCliente");
         String apellidoCliente = request.getParameter("apellidoCliente");
+<<<<<<< HEAD
         String telefonoCliente = request.getParameter("telefonoCliente");
+=======
+        String telefono = request.getParameter("telefono");
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         String correo = request.getParameter("correo");
         String dui = request.getParameter("dui");
         String tipoCliente = request.getParameter("tipoCliente");
@@ -267,7 +346,11 @@ public class ServletPrincipal extends HttpServlet {
         String sql = "UPDATE Clientes SET "
     + "NombreCliente=?, "
     + "ApellidoCliente=?, "
+<<<<<<< HEAD
     + "telefonoCliente=?, "
+=======
+    + "Telefono=?, "
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
                 + "Correo=?, "
                 + "DUI=?, "
                 + "TipoCliente=?, "
@@ -281,7 +364,11 @@ public class ServletPrincipal extends HttpServlet {
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, nombreCliente);
                 pstmt.setString(2, apellidoCliente);
+<<<<<<< HEAD
                 pstmt.setString(3, telefonoCliente);
+=======
+                pstmt.setString(3, telefono);
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
                 pstmt.setString(4, correo);
                 pstmt.setString(5, dui);
                 pstmt.setString(6, tipoCliente);
@@ -305,7 +392,11 @@ public class ServletPrincipal extends HttpServlet {
 
     public void eliminarCliente(HttpServletRequest request, HttpServletResponse response) {
         // Obtener el ID del Cliente a eliminar desde la solicitud
+<<<<<<< HEAD
         String ID_Cliente = request.getParameter("ID_Cliente");
+=======
+        String ID_Cliente = request.getParameter("id");
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -330,6 +421,7 @@ public class ServletPrincipal extends HttpServlet {
     }
 
     public void mostrarClientes(HttpServletRequest request, HttpServletResponse response) {
+<<<<<<< HEAD
     try {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -362,6 +454,41 @@ public class ServletPrincipal extends HttpServlet {
     }
 }
 
+=======
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+                try(Connection conn = DriverManager.getConnection(url)){
+                    request.setAttribute("mensaje_conexion", "Ok!");
+                    String sqlQuery = "select * from VistaClientes";
+                    PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
+                    ResultSet rs = pstmt.executeQuery();
+                    ArrayList<ViewModelCliente> listaCliente = new ArrayList<>();
+                    while (rs.next()) {
+                        ViewModelCliente cliente = new ViewModelCliente();
+                        cliente.setID_Cliente(rs.getInt("ID_Cliente"));
+                        cliente.setNombreCliente(rs.getString("NombreCliente"));
+                        cliente.setApellidoCliente(rs.getString("ApellidoCliente"));
+                        cliente.setTelefonoCliente(rs.getString("TelefonoCliente"));
+                        cliente.setCorreo(rs.getString("Correo"));
+                        cliente.setDui(rs.getString("DUI"));
+                        cliente.setTipoCliente(rs.getString("TipoCliente"));
+                        cliente.setFechaRegistro(rs.getDate("FechaRegistro"));
+                        cliente.setNombreMunicipio(rs.getString("NombreMunicipio"));
+                        cliente.setNombreDepartamento(rs.getString("NombreDepartamento"));
+
+
+                        listaCliente.add(cliente);
+                    }               
+                    request.setAttribute("listaCliente", listaCliente);
+
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                request.setAttribute("mensaje_conexion", ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     
     //////////  ACA VA LO DE DIRECCIONES ///////////
     public void mostrarDirecciones(HttpServletRequest request, HttpServletResponse response) {
@@ -423,6 +550,7 @@ public class ServletPrincipal extends HttpServlet {
                     factura.setFormaDePago(rs.getString("FormaDePago"));
                     factura.setID_DetalleFactura(rs.getInt("ID_DetalleFactura"));
                     factura.setID_Cliente(rs.getInt("ID_Cliente"));
+<<<<<<< HEAD
                     factura.setID_Empleado(rs.getInt("ID_Empleado"));
                     factura.setNombreCliente(rs.getString("NombreCliente"));
                     factura.setApellidoCliente(rs.getString("ApellidoCliente"));
@@ -430,16 +558,28 @@ public class ServletPrincipal extends HttpServlet {
                     factura.setCorreo(rs.getString("Correo"));
                     factura.setDui(rs.getString("DUI"));
                     factura.setTipoCliente(rs.getString("TipoCliente"));
+=======
+                    factura.setNombreCliente(rs.getString("NombreCliente"));
+                    factura.setApellidoCliente(rs.getString("ApellidoCliente"));
+                    factura.setTelefonoCliente(rs.getString("TelefonoCliente"));
+                    factura.setTipoCliente(rs.getString("TipoCliente"));
+                    factura.setID_Empleado(rs.getInt("ID_Empleado"));
+                    factura.setNombresEmpleado(rs.getString("NombresEmpleado"));
+                    factura.setApellidosEmpleado(rs.getString("ApellidosEmpleado"));
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
                     factura.setCantidadProducto(rs.getInt("CantidadProducto"));
                     factura.setPrecioUnitario(rs.getBigDecimal("PrecioUnitario"));
                     factura.setSubtotal(rs.getBigDecimal("Subtotal"));
                     factura.setIMPUESTO_IVA(rs.getBigDecimal("IMPUESTO_IVA"));
                     factura.setTotal(rs.getBigDecimal("Total"));
+<<<<<<< HEAD
                     factura.setID_Producto(rs.getInt("ID_Producto"));
                     factura.setNombreProducto(rs.getString("NombreProducto"));
                     factura.setFechaVencimiento(rs.getDate("FechaVencimiento").toLocalDate());
                     factura.setDescripcion(rs.getString("Descripcion"));
                     factura.setNombreCategoriaProducto(rs.getString("NombreCategoriaProducto"));
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 
                     listaFactura.add(factura);
                 }
@@ -451,6 +591,7 @@ public class ServletPrincipal extends HttpServlet {
         }
     }
     
+<<<<<<< HEAD
     
     public void agregarFactura(HttpServletRequest request, HttpServletResponse response) {
         // CAPTURA DE VARIABLES
@@ -558,6 +699,8 @@ public class ServletPrincipal extends HttpServlet {
         }
     }
 
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     ///////////////// ACA VA PROVEEDORES
     public void mostrarProveedores(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -589,7 +732,11 @@ public class ServletPrincipal extends HttpServlet {
             ex.printStackTrace();
         }
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
     public void modificarProveedor(HttpServletRequest request, HttpServletResponse response) {
         //CAPTURA DE VARIABLES
         String ID_Proveedor = request.getParameter("ID_Proveedor");
@@ -774,17 +921,31 @@ public class ServletPrincipal extends HttpServlet {
         String clave = request.getParameter("clave");
         String ID_Empleado = request.getParameter("ID_Empleado");
         String ID_Rol = request.getParameter("ID_Rol");
+<<<<<<< HEAD
 
+=======
+        String nombresEmpleado = request.getParameter("nombresEmpleado");
+        String nombreTipoEmpleado = request.getParameter("nombreTipoEmpleado");
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             try (Connection conn = DriverManager.getConnection(url)) {
                 request.setAttribute("mensaje_conexion", "Ok!");
+<<<<<<< HEAD
                 String sql = "insert into Usuarios values (?, ?, ?, ?)";
+=======
+                String sql = "insert into Proveedores values (?, ?, ?, ?,?)";
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, usuario);
                 pstmt.setString(2, clave);
                 pstmt.setString(3, ID_Empleado);
                 pstmt.setString(4, ID_Rol);
+<<<<<<< HEAD
+=======
+                pstmt.setString(5, nombresEmpleado);
+                pstmt.setString(6, nombreTipoEmpleado);
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
                 
 
                 int registros = pstmt.executeUpdate();
@@ -800,6 +961,7 @@ public class ServletPrincipal extends HttpServlet {
         }
     }
     
+<<<<<<< HEAD
     public void eliminarFactura(HttpServletRequest request, HttpServletResponse response) {
         // Obtener el ID del Usuario a eliminar desde la solicitud
         String ID_Factura = request.getParameter("ID_Factura");
@@ -946,11 +1108,17 @@ public class ServletPrincipal extends HttpServlet {
     public void eliminarCompra(HttpServletRequest request, HttpServletResponse response) {
         // Obtener el ID del Proveedor a eliminar desde la solicitud
         String ID_Compra = request.getParameter("ID_Compra");
+=======
+    public void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
+        // Obtener el ID del Proveedor a eliminar desde la solicitud
+        String ID_Proveedor = request.getParameter("ID_Usuario");
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             try (Connection conn = DriverManager.getConnection(url)) {
                 request.setAttribute("mensaje_conexion", "Ok!");
+<<<<<<< HEAD
                 String sql = "DELETE FROM Compras WHERE ID_Compra = ?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, ID_Compra);
@@ -1086,6 +1254,11 @@ public class ServletPrincipal extends HttpServlet {
                 String sql = "DELETE FROM Inventarios WHERE ID_Inventario = ?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, ID_Inventario);
+=======
+                String sql = "DELETE FROM Usuarios WHERE ID_Usuario = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, ID_Proveedor);
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
                 int registros = pstmt.executeUpdate();
                 if (registros > 0) {
                     // Éxito al eliminar el cliente
@@ -1134,17 +1307,30 @@ public class ServletPrincipal extends HttpServlet {
             request.getRequestDispatcher("/RegistrarProveedores.html").forward(request, response);
         } else if (accion.equals("GestionarEmpleados")) {
             mostrarEmpleados(request, response);
+<<<<<<< HEAD
             request.getRequestDispatcher("/PanelGestion/GestionarEmpleados.jsp").forward(request, response);
         }else if (accion.equals("GestionarClientes")) {
             mostrarClientes(request, response);
             request.getRequestDispatcher("/PanelGestion/GestionarClientes.jsp").forward(request, response);
+=======
+            request.getRequestDispatcher("/GestionarEmpleados.jsp").forward(request, response);
+        }else if (accion.equals("GestionarCliente")) {
+            mostrarClientes(request, response);
+            request.getRequestDispatcher("/GestionarCliente.jsp").forward(request, response);
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         }else if (accion.equals("MostrarDirecciones")) {
             mostrarDirecciones(request, response);
             request.getRequestDispatcher("/MostrarDirecciones.jsp").forward(request, response);
         }
+<<<<<<< HEAD
         else if (accion.equals("GestionarFacturas")) {
             mostrarFacturas(request, response);
             request.getRequestDispatcher("/PanelGestion/GestionarFacturas.jsp").forward(request, response);
+=======
+        else if (accion.equals("MostrarFacturas")) {
+            mostrarFacturas(request, response);
+            request.getRequestDispatcher("/MostrarFacturas.jsp").forward(request, response);
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         }
         else if (accion.equals("GestionarProveedores")) {
             mostrarProveedores(request, response);
@@ -1153,12 +1339,15 @@ public class ServletPrincipal extends HttpServlet {
         else if (accion.equals("GestionarUsuarios")) {
             mostrarUsuarios(request, response);
             request.getRequestDispatcher("/PanelGestion/GestionarUsuarios.jsp").forward(request, response);
+<<<<<<< HEAD
         }else if (accion.equals("GestionarCompras")) {
             mostrarCompras(request, response);
             request.getRequestDispatcher("/PanelGestion/GestionarCompras.jsp").forward(request, response);
         }else if (accion.equals("GestionarInventarios")) {
             mostrarInventarios(request, response);
             request.getRequestDispatcher("/PanelGestion/GestionarInventarios.jsp").forward(request, response);
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         }
         
         //REDIRECCION PARA JSP DE AGREGAR
@@ -1167,7 +1356,11 @@ public class ServletPrincipal extends HttpServlet {
                 request.setAttribute("exito", request.getSession().getAttribute("exito"));
                 request.getSession().removeAttribute("exito");
             }
+<<<<<<< HEAD
             request.getRequestDispatcher("Agregar/AgregarEmpleado.jsp").forward(request, response);
+=======
+            request.getRequestDispatcher("AgregarEmpleado.jsp").forward(request, response);
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         }
         
         else if (accion.equals("AgregarCliente")) {
@@ -1175,7 +1368,11 @@ public class ServletPrincipal extends HttpServlet {
                 request.setAttribute("exito", request.getSession().getAttribute("exito"));
                 request.getSession().removeAttribute("exito");
             }
+<<<<<<< HEAD
             request.getRequestDispatcher("Agregar/AgregarCliente.jsp").forward(request, response);
+=======
+            request.getRequestDispatcher("AgregarCliente.jsp").forward(request, response);
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
             
         }else if (accion.equals("AgregarProveedor")) {
             if (request.getSession().getAttribute("exito") != null) {
@@ -1189,6 +1386,7 @@ public class ServletPrincipal extends HttpServlet {
                 request.getSession().removeAttribute("exito");
             }
             request.getRequestDispatcher("Agregar/AgregarUsuario.jsp").forward(request, response);
+<<<<<<< HEAD
         }else if (accion.equals("AgregarFactura")) {
             if (request.getSession().getAttribute("exito") != null) {
                 request.setAttribute("exito", request.getSession().getAttribute("exito"));
@@ -1207,6 +1405,8 @@ public class ServletPrincipal extends HttpServlet {
                 request.getSession().removeAttribute("exito");
             }
             request.getRequestDispatcher("Agregar/AgregarInventario.jsp").forward(request, response);
+=======
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         }
     }   
     @Override
@@ -1256,10 +1456,17 @@ public class ServletPrincipal extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=AgregarCliente");
         } else if (accion.equals("ModificarCliente")) {
             modificarCliente(request, response);
+<<<<<<< HEAD
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarClientes");
         }else if (accion.equals("EliminarCliente")) {
             eliminarCliente(request, response);
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarClientes");
+=======
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarCliente");
+        }else if (accion.equals("EliminarCliente")) {
+            eliminarCliente(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarCliente");
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         }else if (accion.equals("EliminarProveedor")) {
             eliminarProveedor(request, response);
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarProveedores");
@@ -1274,6 +1481,7 @@ public class ServletPrincipal extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=AgregarUsuario");
         }else if (accion.equals("EliminarUsuario")) {
             eliminarUsuario(request, response);
+<<<<<<< HEAD
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarUsuarios");
         }else if (accion.equals("ModificarUsuario")) {
             modificarUsuario(request, response);
@@ -1305,6 +1513,12 @@ public class ServletPrincipal extends HttpServlet {
         }else if (accion.equals("AgregarInventario")) {
             agregarInventario(request, response);
             response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=AgregarInventario");
+=======
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarUsuario");
+        }else if (accion.equals("ModificarUsuario")) {
+            modificarUsuario(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServletPrincipal?accion=GestionarUsuario");
+>>>>>>> 98f15828566f2ed0730dfb948d1e166751f91e37
         }
     }
     /**
